@@ -1,0 +1,13 @@
+<input placeholder="number1" [(ngModel)]="number1" type="number">
+<span>
+  <select [(ngModel)]="calculator">
+    <option>+</option>
+    <option>-</option>
+    <option>*</option>
+    <option>/</option>
+  </select>
+</span>
+<input placeholder="number2" [(ngModel)]="number2" type="number">
+<button (click)="calculate()">Bằng</button>
+<p>Kết quả:{{result}}</p>
+
