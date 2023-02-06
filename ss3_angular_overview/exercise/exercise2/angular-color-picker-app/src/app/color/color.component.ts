@@ -7,8 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ColorComponent implements OnInit {
 
-  color1: string = "";
-  color2: string = "";
+  firstColor: string = "";
+  secondColor: string = "";
 
   constructor() {
   }
