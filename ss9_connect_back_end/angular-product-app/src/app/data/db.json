@@ -1,0 +1,52 @@
+{
+  "category": [
+    {
+      "id": 1,
+      "name": "apple"
+    },
+    {
+      "id": 2,
+      "name": "samsung"
+    },
+    {
+      "id": 3,
+      "name": "sony"
+    },
+    {
+      "id": 4,
+      "name": "nokia"
+    }
+  ],
+  "product": [
+    {
+      "id": 1,
+      "name": "Iphone 11",
+      "price": 1000000,
+      "description": "New",
+      "category": {
+        "id": 1,
+        "name": "apple"
+      }
+    },
+    {
+      "id": 2,
+      "name": "nokia1280",
+      "price": "100000",
+      "description": "đẹp",
+      "category": {
+        "id": 4,
+        "name": "nokia"
+      }
+    },
+    {
+      "id": 3,
+      "name": "oppo A73",
+      "price": "500000",
+      "description": "đẹp",
+      "category": {
+        "id": 3,
+        "name": "sony"
+      }
+    }
+  ]
+}

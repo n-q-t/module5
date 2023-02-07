@@ -1,0 +1,213 @@
+<app-nar-bar></app-nar-bar>
+
+<section class="vh-90 gradient-custom" style="background-color: lightblue">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h3  style="text-align: center">Thêm mới dịch vụ</h3>
+            <form [formGroup]="facilityForm" (ngSubmit)="saveFacility()" >
+
+              <input hidden formControlName="id">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-outline">
+                    <label class="form-label ">   </label>
+                    <select class="form-select form-control-lg" formControlName="facilityType">
+                      <option value="">--Chọn dịch vụ--</option>
+                      <option *ngFor="let f of facilityTypes" [ngValue]="f" [text]="f.name"></option>
+                    </select>
+                  </div>
+                  <div *ngIf="!facilityFormValue.facilityType.valid && (facilityFormValue.facilityType.touched||facilityFormValue.facilityType.dirty)">
+                    <div style="color: red" *ngIf="facilityFormValue.facilityType.hasError('required')">Không được bỏ trống</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-outline">
+                    <label class="form-label "> </label>
+
+                    <select class="form-select form-control-lg" formControlName="rentType">
+                      <option value="" >--Chọn kiểu thuê--</option>
+                      <option *ngFor="let r of rentTypes" [ngValue]="r" style="color: black">{{r.name}}</option>
+                    </select>
+
+                  </div>
+                  <div *ngIf="!facilityFormValue.rentType.valid && (facilityFormValue.rentType.touched||facilityFormValue.rentType.dirty)">
+                    <div style="color: red" *ngIf="facilityFormValue.rentType.hasError('required')">Không được bỏ trống</div>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <!--              <div class="row">-->
+              <!--                <div class="col-md-12 mb-4">-->
+
+              <!--                  <div class="form-outline">-->
+              <!--                    <label class="form-label" for="firstName">First Name</label>-->
+              <!--                    <input type="text" id="firstName" class="form-control form-control-lg" />-->
+              <!--                  </div>-->
+
+              <!--                </div>-->
+              <!--              </div>-->
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="emailAddress">Tên dịch vụ</label>
+                    <input type="email" id="emailAddress" class="form-control form-control-lg" formControlName="name"/>
+                    <div *ngIf="!facilityFormValue.name.valid && (facilityFormValue.name.dirty||facilityFormValue.name.touched)">
+                      <div style="color: red"*ngIf="facilityFormValue.name.hasError('required')">Không được bỏ trống</div>
+<!--                      <div style="color: red"*ngIf="facilityFormValue.name.hasError('pattern')">Không đúng định dạng</div>-->
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="phoneNumber">Diện tích</label>
+                    <input type="number" id="phoneNumber" class="form-control form-control-lg" formControlName="area"/>
+                    <div *ngIf="!facilityFormValue.area.valid && (facilityFormValue.area.dirty||facilityFormValue.area.touched)">
+                      <div style="color: red" *ngIf="facilityFormValue.area.hasError('required')">Không được bỏ trống</div>
+<!--                      <div style="color: red" *ngIf="facilityFormValue.area.hasError('min')">Tuổi lớn hơn 18</div>-->
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                  <div class="form-outline datepicker w-100">
+                    <label for="birthdayDate" class="form-label">Chi phí thuê</label>
+                    <input type="text"  class="form-control form-control-lg" id="birthdayDate" formControlName="cost"/>
+                    <div *ngIf="!facilityFormValue.cost.valid && (facilityFormValue.cost.dirty||facilityFormValue.cost.touched)">
+                      <div style="color: red" *ngIf="facilityFormValue.cost.hasError('required')">Không được bỏ trống</div>
+<!--                      <div style="color: red" *ngIf="facilityFormValue.cost.hasError('minlength')">Ít nhất 6 kí tự</div>-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="maxPeople">Số lượng người tối đa</label>
+                    <input type="number" id="maxPeople" class="form-control form-control-lg" formControlName="maxPeople"/>
+                    <div *ngIf="!facilityFormValue.maxPeople.valid && (facilityFormValue.maxPeople.dirty||facilityFormValue.maxPeople.touched)">
+                      <div style="color: red" *ngIf="facilityFormValue.maxPeople.hasError('required')">Không được bỏ trống</div>
+                      <!--                      <div style="color: red" *ngIf="facilityFormValue.area.hasError('min')">Tuổi lớn hơn 18</div>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+                  <div class="form-outline datepicker w-100">
+                    <label for="standardRoom" class="form-label">Tiêu chuẩn phòng</label>
+                    <input type="text"  class="form-control form-control-lg" id="standardRoom" formControlName="standardRoom"/>
+                    <div *ngIf="!facilityFormValue.standardRoom.valid && (facilityFormValue.standardRoom.dirty||facilityFormValue.standardRoom.touched)">
+                      <div style="color: red" *ngIf="facilityFormValue.standardRoom.hasError('required')">Không được bỏ trống</div>
+                      <!--                      <div style="color: red" *ngIf="facilityFormValue.cost.hasError('minlength')">Ít nhất 6 kí tự</div>-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4 pb-2">
+                  <div class="form-outline">
+                    <label class="form-label" for="desciption">Miêu tả tiện nghi khác:</label>
+                    <input type="number" id="desciption" class="form-control form-control-lg" formControlName="desciption"/>
+                    <div *ngIf="!facilityFormValue.desciption.valid && (facilityFormValue.desciption.dirty||facilityFormValue.desciption.touched)">
+                      <div style="color: red" *ngIf="facilityFormValue.desciption.hasError('required')">Không được bỏ trống</div>
+                      <!--                      <div style="color: red" *ngIf="facilityFormValue.area.hasError('min')">Tuổi lớn hơn 18</div>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+                  <div class="form-outline datepicker w-100">
+                    <label for="poolArea" class="form-label">Diện tích hồ bơi:</label>
+                    <input type="text"  class="form-control form-control-lg" id="poolArea" formControlName="poolArea"/>
+                    <div *ngIf="!facilityFormValue.poolArea.valid && (facilityFormValue.poolArea.dirty||facilityFormValue.poolArea.touched)">
+                      <div style="color: red" *ngIf="facilityFormValue.poolArea.hasError('required')">Không được bỏ trống</div>
+                      <!--                      <div style="color: red" *ngIf="facilityFormValue.cost.hasError('minlength')">Ít nhất 6 kí tự</div>-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4 pb-2">
+                  <div class="form-outline">
+                    <label class="form-label" for="numberOfFloors">Số tầng:</label>
+                    <input type="number" id="numberOfFloors" class="form-control form-control-lg" formControlName="numberOfFloors"/>
+                    <div *ngIf="!facilityFormValue.numberOfFloors.valid && (facilityFormValue.numberOfFloors.dirty||facilityFormValue.numberOfFloors.touched)">
+                      <div style="color: red" *ngIf="facilityFormValue.numberOfFloors.hasError('required')">Không được bỏ trống</div>
+                      <!--                      <div style="color: red" *ngIf="facilityFormValue.area.hasError('min')">Tuổi lớn hơn 18</div>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+<!--                Chọn giới tính-->
+
+<!--                <div class="col-md-6 mb-4">-->
+
+<!--                  <h6 class="mb-2 pb-1">Gender: </h6>-->
+
+<!--                  <div class="form-check form-check-inline">-->
+<!--                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"-->
+<!--                           value="option1"   formControlName="gender"/>-->
+<!--                    <label class="form-check-label" for="femaleGender">Female</label>-->
+<!--                  </div>-->
+
+<!--                  <div class="form-check form-check-inline">-->
+<!--                    <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="maleGender"-->
+<!--                           value="option2" formControlName="gender"/>-->
+<!--                    <label class="form-check-label" for="maleGender">Male</label>-->
+<!--                  </div>-->
+
+<!--                  <div class="form-check form-check-inline">-->
+<!--                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"-->
+<!--                           value="option3" formControlName="gender"/>-->
+<!--                    <label class="form-check-label" for="otherGender">Other</label>-->
+<!--                  </div>-->
+
+<!--                  <div *ngIf="!contactFormValue.gender.valid && (contactFormValue.country.pristine||contactFormValue.gender.dirty||contactFormValue.gender.touched)">-->
+<!--                    <div style="color: red" *ngIf="contactFormValue.gender.hasError('required')">Không được bỏ trống</div>-->
+<!--                  </div>-->
+
+<!--                </div>-->
+<!--              </div>-->
+
+
+                <!--                <input class="btn btn-primary btn-lg" type="submit" value="Submit" [disabled]="!contactForm.valid"/>-->
+                <div >
+                  <button type="button" class="btn btn-primary btn-lg" style="margin-left: 200px" routerLink="/facility">Quay lại</button>
+                  <button type="submit" class="btn btn-primary btn-lg" style="margin-left: 60px">Thêm mới</button>
+                </div>
+
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

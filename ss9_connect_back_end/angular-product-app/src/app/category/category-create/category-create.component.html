@@ -1,0 +1,25 @@
+<button class="btn btn-info" style="margin: 10px" routerLink="/category">Quay lại</button>
+
+<h2 style="color: red;">Thêm mới</h2>
+<form [formGroup]="categoryForm" (ngSubmit)="saveCategory()">
+  <table>
+    <tr hidden>
+      <td>Mã thể loại:</td>
+      <td><input type="text" formControlName="id"></td>
+    </tr>
+    <tr>
+      <td>Tên thể loại:</td>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button type="submit" class="btn btn-primary">Thêm</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+
+
+

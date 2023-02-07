@@ -1,0 +1,40 @@
+<button class="btn btn-info" style="margin: 10px" routerLink="/product">Quay lại</button>
+
+<h2 style= "color: red;">Thêm mới</h2>
+<form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+  <table  >
+    <tr hidden>
+      <td>Mã sản phẩm:</td>
+      <td><input type="text" formControlName="id" ></td>
+    </tr>
+    <tr>
+      <td>Tên sản phẩm:</td>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td>Giá sản phẩm:</td>
+      <td><input type="text" formControlName="price"></td>
+    </tr>
+    <tr>
+      <td>Miêu tả sản phẩm:</td>
+      <td><input type="text" formControlName="description"></td>
+    </tr>
+    <tr>
+      <td>Thể loại</td>
+      <td>
+        <select   formControlName="category">
+          <option [ngValue]="null"disabled>Chọn thể loại</option>
+          <option *ngFor="let c of categorys" [ngValue]="c" [text]="c.name"></option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td><button type="submit" class="btn btn-primary" >Thêm</button></td>
+    </tr>
+  </table>
+</form>
+
+
+

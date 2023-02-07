@@ -1,0 +1,111 @@
+<app-nar-bar></app-nar-bar>
+
+
+<button class="btn btn-primary " style="margin-left: 1380px;margin-bottom: 10px" routerLink="/facility/create">Thêm mới</button>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-4" *ngFor="let f of facilitys">
+      <div class="card " style="margin-bottom: 10px">
+        <img
+          src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Studio-Suite-F-768x497.jpg"
+          class="card-img-top" alt="...">
+        <div class="card-body" >
+          <h5 class="card-title">{{f.name}}</h5>
+          <p class="card-text">Room size : {{f.area}}m2</p>
+
+          <a  class="btn btn-primary"  data-bs-toggle="modal"  data-bs-target="#view" (click)="facility=f">View</a>
+          <a  class="btn btn-warning" style="margin-left: 20px"  [routerLink]="['/facility/edit',f.id]">Edit</a>
+          <a  class="btn btn-danger" style="margin-left: 20px" data-bs-toggle="modal"  data-bs-target="#delete" (click)="facility=f">Delete</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination" style="float: right;">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!--      Modal xem chi tiết -->
+
+<div class="modal fade" id="view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content" >
+        <h3  style="text-align: center;margin-top: 10px">{{facility.name}}</h3>
+      <div class="modal-body" >
+        <table class="table table-light">
+          <tr>
+            <th>Diện tích:</th>
+            <td>{{facility.area}}m2</td>
+          </tr>
+          <tr>
+            <th>Chi phí thuê:</th>
+            <td>{{facility.cost}}</td>
+          </tr>
+          <tr>
+            <th>Số lượng người tối đa:</th>
+            <td>{{facility.maxPeople}}</td>
+          </tr>
+          <tr>
+            <th>Kiểu thuê:</th>
+            <td>{{facility.rentType?.name}}</td>
+          </tr>
+          <tr>
+            <th>Tiêu chuẩn phòng:</th>
+            <td>{{facility.standardRoom}}</td>
+          </tr>
+          <tr *ngIf="facility.desciption">
+            <th>Mô tả tiện nghi khác:</th>
+            <td>{{facility.desciption}}</td>
+          </tr>
+          <tr *ngIf="facility.poolArea">
+            <th >Diện tích hồ bơi:</th>
+            <td>{{facility.poolArea}}</td>
+          </tr>
+          <tr *ngIf="facility.numberOfFloors">
+            <th>Số tầng:</th>
+            <td>{{facility.numberOfFloors}}</td>
+          </tr>
+          <tr *ngIf="facility.facilityFree">
+            <th>Dịch vụ miễn phí đi kèm:</th>
+            <td>{{facility.facilityFree}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--      Modal xóa-->
+<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        Bạn có muốn xóa dịch vụ : {{facility.name}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteFacility(facility.id)">Có</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
