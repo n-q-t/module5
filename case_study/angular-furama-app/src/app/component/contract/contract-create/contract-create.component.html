@@ -1,0 +1,134 @@
+<app-nar-bar></app-nar-bar>
+
+<section class="vh-90 gradient-custom" style="background-color: lightblue">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h3 style="text-align: center">Thêm mới</h3>
+            <form [formGroup]="contractForm" (ngSubmit)="saveContract()">
+
+              <input hidden formControlName="id">
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="code">Mã hợp đồng</label>
+                    <input type="text" id="code" class="form-control form-control-lg" formControlName="code"/>
+                    <div
+                      *ngIf="!contractFormValue.code.valid && (contractFormValue.code.dirty||contractFormValue.code.touched)">
+                      <div style="color: red" *ngIf="contractFormValue.code.hasError('required')">Không được bỏ trống
+                      </div>
+                      <!--                      <div style="color: red"*ngIf="facilityFormValue.name.hasError('pattern')">Không đúng định dạng</div>-->
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="deposit">Tiền đặt cọc</label>
+                    <input type="text" id="deposit" class="form-control form-control-lg" formControlName="deposit"/>
+                    <div
+                      *ngIf="!contractFormValue.deposit.valid && (contractFormValue.deposit.dirty||contractFormValue.deposit.touched)">
+                      <div style="color: red" *ngIf="contractFormValue.deposit.hasError('required')">Không được bỏ trống
+                      </div>
+                      <!--                      <div style="color: red" *ngIf="facilityFormValue.area.hasError('min')">Tuổi lớn hơn 18</div>-->
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="startDate">Ngày bắt đầu</label>
+                    <input type="date" id="startDate" class="form-control form-control-lg"
+                           formControlName="startDate"/>
+                    <div
+                      *ngIf="!contractFormValue.startDate.valid && (contractFormValue.startDate.dirty||contractFormValue.startDate.touched)">
+                      <div style="color: red" *ngIf="contractFormValue.startDate.hasError('required')">Không được bỏ
+                        trống
+                      </div>
+                      <!--                      <div style="color: red"*ngIf="facilityFormValue.name.hasError('pattern')">Không đúng định dạng</div>-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="endDate">Ngày kết thúc</label>
+                    <input type="date" id="endDate" class="form-control form-control-lg"
+                           formControlName="endDate"/>
+                    <div
+                      *ngIf="!contractFormValue.endDate.valid && (contractFormValue.endDate.dirty||contractFormValue.endDate.touched)">
+                      <div style="color: red" *ngIf="contractFormValue.endDate.hasError('required')">Không được bỏ
+                        trống
+                      </div>
+                      <!--                      <div style="color: red"*ngIf="facilityFormValue.name.hasError('pattern')">Không đúng định dạng</div>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-outline">
+                    <label class="form-label "> </label>
+                    <select class="form-select form-control-lg" formControlName="customer">
+                      <option value="">--Tên khách hàng--</option>
+                      <option *ngFor="let c of customers" [ngValue]="c" [text]="c.name"></option>
+                    </select>
+                  </div>
+                  <div
+                    *ngIf="!contractFormValue.customer.valid && (contractFormValue.customer.touched||contractFormValue.customer.dirty)">
+                    <div style="color: red" *ngIf="contractFormValue.customer.hasError('required')">Không được bỏ trống
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-outline">
+                    <label class="form-label "> </label>
+                    <select class="form-select form-control-lg" formControlName="facility">
+                      <option value="">--Tên dịch vụ--</option>
+                      <option *ngFor="let f of facilitys" [ngValue]="f" [text]="f.name"></option>
+                    </select>
+                  </div>
+                  <div
+                    *ngIf="!contractFormValue.facility.valid && (contractFormValue.facility.touched||contractFormValue.facility.dirty)">
+                    <div style="color: red" *ngIf="contractFormValue.facility.hasError('required')">Không được bỏ trống
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="mt-4 pt-2">
+                  <button type="button" class="btn btn-primary btn-lg" style="margin-left: 200px"
+                          routerLink="/contract">Quay lại
+                  </button>
+                  <button type="submit" class="btn btn-primary btn-lg" style="margin-left: 40px"
+                          [disabled]="!contractForm.valid"> Thêm mới
+                  </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

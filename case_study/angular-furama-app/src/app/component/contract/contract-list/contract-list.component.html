@@ -1,0 +1,61 @@
+<app-nar-bar></app-nar-bar>
+<div class="container">
+  <a routerLink="/contract/create" class="btn btn-primary" style="float: right;margin: 10px;margin-right: 20px" >Thêm mới</a>
+
+  <div  >
+    <table class="table table-info">
+      <thead>
+      <tr >
+        <th scope="col">STT</th>
+        <th scope="col">Mã hợp đồng</th>
+        <th scope="col">Thông tin khách hàng</th>
+        <th scope="col">Thông tin dịch vụ</th>
+        <th scope="col">Ngày bắt đầu</th>
+        <th scope="col">Ngày kết thúc</th>
+        <th scope="col">Tiền đặt coc</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr  *ngFor="let c of contracts,index as i">
+        <td >{{i+1}}</td>
+        <td >{{c.code}}</td>
+        <td >{{c.customer?.name}}</td>
+        <td >{{c.facility?.name}}</td>
+        <td >{{c.startDate | date:"dd/MM/yyyy"}}</td>
+        <td >{{c.endDate | date:"dd/MM/yyyy"}}</td>
+        <td >{{c.deposit}}</td>
+        <td><a [routerLink]="['/contract/edit',c.id]" class="btn btn-warning" >Edit</a></td>
+        <td>
+          <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"  (click)="contract=c">
+            Delete
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Xóa hợp đồng</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input name="deleteId" hidden id="deleteId">
+            Bạn có muốn xóa hợp đồng có mã: {{contract.code}}?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
+            <button type="submit" class="btn btn-danger" (click)="deleteContract(contract.id)">Xóa</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

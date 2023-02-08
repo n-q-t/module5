@@ -9,6 +9,7 @@ import { NavigationComponent } from './component/navigation/navigation.component
 import { HttpClientModule} from '@angular/common/http';
 import {CustomerModule} from './component/customer/customer.module';
 import {FacilityModule} from './component/facility/facility.module';
+import {ContractModule} from './component/contract/contract.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import {FacilityModule} from './component/facility/facility.module';
     AppRoutingModule,
     CustomerModule,
     FacilityModule,
+    ContractModule,
     HttpClientModule
   ],
   providers: [],

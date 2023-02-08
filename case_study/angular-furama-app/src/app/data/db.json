@@ -283,6 +283,7 @@
   "contract": [
     {
       "id": 1,
+      "code": "HD-009",
       "startDate": "2020-12-08",
       "endDate": "2020-12-08",
       "deposit": 0,
@@ -301,6 +302,7 @@
     },
     {
       "id": 2,
+      "code": "HD-001",
       "startDate": "2020-07-14",
       "endDate": "2020-07-21",
       "deposit": 200000,
@@ -319,6 +321,7 @@
     },
     {
       "id": 3,
+      "code": "HD-001",
       "startDate": "2021-03-15",
       "endDate": "2021-03-17",
       "deposit": 50000,
@@ -337,6 +340,7 @@
     },
     {
       "id": 4,
+      "code": "HD-001",
       "startDate": "2021-01-14",
       "endDate": "2021-01-18",
       "deposit": 100000,
@@ -355,6 +359,7 @@
     },
     {
       "id": 5,
+      "code": "HD-001",
       "startDate": "2021-07-14",
       "endDate": "2021-07-15",
       "deposit": 0,
@@ -373,6 +378,7 @@
     },
     {
       "id": 6,
+      "code": "HD-001",
       "startDate": "2021-06-01",
       "endDate": "2021-06-03",
       "deposit": 0,
@@ -391,111 +397,47 @@
     },
     {
       "id": 7,
-      "startDate": "2021-09-02",
-      "endDate": "2021-09-05",
-      "deposit": 100000,
+      "code": "HD-0002",
       "customer": {
-        "id": 4,
-        "name": "Dương Văn Quan"
-      },
-      "employee": {
-        "id": 7,
-        "name": "Nguyễn Hữu Hà"
-      },
-      "facility": {
         "id": 1,
-        "name": "Villa Beach Front"
-      }
-    },
-    {
-      "id": 8,
-      "startDate": "2021-06-17",
-      "endDate": "2021-06-18",
-      "deposit": 150000,
-      "customer": {
-        "id": 4,
-        "name": "Dương Văn Quan"
-      },
-      "employee": {
-        "id": 3,
-        "name": "Hồ Thị Yến"
+        "code": "KH-0000",
+        "customerType": {
+          "id": 5,
+          "name": "Member"
+        },
+        "name": "Nguyễn Thị Hào",
+        "dateOfBirth": "1970-11-07",
+        "idCard": "643431213",
+        "phoneNumber": "0945423362",
+        "gender": "Nữ",
+        "email": "thihao07@gmail.com",
+        "address": "23 Nguyễn Hoàng, Đà Nẵng",
+        "flagDelete": false
       },
       "facility": {
-        "id": 1,
-        "name": "Villa Beach Front"
-      }
-    },
-    {
-      "id": 9,
-      "startDate": "2020-11-19",
-      "endDate": "2020-11-19",
-      "deposit": 0,
-      "customer": {
-        "id": 4,
-        "name": "Dương Văn Quan"
-      },
-      "employee": {
-        "id": 3,
-        "name": "Hồ Thị Yến"
-      },
-      "facility": {
-        "id": 3,
-        "name": "Room Twin 01"
-      }
-    },
-    {
-      "id": 10,
-      "startDate": "2021-04-12",
-      "endDate": "2021-04-14",
-      "deposit": 0,
-      "customer": {
-        "id": 3,
-        "name": "Trương Định Nghệ"
-      },
-      "employee": {
-        "id": 10,
-        "name": "Nguyễn Công Đạo"
-      },
-      "facility": {
-        "id": 5,
-        "name": "House Princess 02"
-      }
-    },
-    {
-      "id": 11,
-      "startDate": "2021-04-25",
-      "endDate": "2021-04-25",
-      "deposit": 0,
-      "customer": {
         "id": 2,
-        "name": "Phạm Xuân Diệu"
+        "name": "House Princess 01",
+        "area": 14000,
+        "cost": 5000000,
+        "maxPeople": 7,
+        "facilityType": {
+          "id": 2,
+          "name": "House"
+        },
+        "rentType": {
+          "id": 2,
+          "name": "month"
+        },
+        "standardRoom": "vip",
+        "descriptionOtherConvenience": "Có thêm bếp nướng",
+        "poolArea": 0,
+        "numberOfFloors": 3,
+        "facilityFree": "",
+        "flagDelete": false
       },
-      "employee": {
-        "id": 2,
-        "name": "Lê Văn Bình"
-      },
-      "facility": {
-        "id": 1,
-        "name": "Villa Beach Front"
-      }
-    },
-    {
-      "id": 12,
-      "startDate": "2021-05-25",
-      "endDate": "2021-05-27",
-      "deposit": 0,
-      "customer": {
-        "id": 10,
-        "name": "Nguyễn Tâm Đắc"
-      },
-      "employee": {
-        "id": 7,
-        "name": "Nguyễn Hữu Hà"
-      },
-      "facility": {
-        "id": 1,
-        "name": "Villa Beach Front"
-      }
+      "startDate": "2023-02-03",
+      "endDate": "2023-02-11",
+      "deposit": "100000.0"
     }
   ]
 }
