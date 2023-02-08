@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { CountdownTimerComponent } from './countdown-timer/countdown-timer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProgressBarComponent
+    CountdownTimerComponent
   ],
   imports: [
     BrowserModule,

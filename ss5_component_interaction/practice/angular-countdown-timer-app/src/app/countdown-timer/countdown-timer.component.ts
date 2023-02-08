@@ -1,11 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-progress-bar',
-  templateUrl: './progress-bar.component.html',
-  styleUrls: ['./progress-bar.component.css']
+  selector: 'app-countdown-timer',
+  templateUrl: './countdown-timer.component.html',
+  styleUrls: ['./countdown-timer.component.css']
 })
-export class ProgressBarComponent implements OnInit {
+export class CountdownTimerComponent implements OnInit {
+
   number: number = 11;
   private interval = 0;
 
@@ -32,4 +33,5 @@ export class ProgressBarComponent implements OnInit {
   pause() {
     clearInterval(this.interval)
   }
+
 }
