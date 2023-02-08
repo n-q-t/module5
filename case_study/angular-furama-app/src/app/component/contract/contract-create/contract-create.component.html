@@ -16,29 +16,32 @@
 
                   <div class="form-outline">
                     <label class="form-label" for="code">Mã hợp đồng</label>
-                    <input type="text" id="code" class="form-control form-control-lg" formControlName="code"/>
+                    <input type="text" id="code" class="form-control form-control-lg" formControlName="code"
+                           placeholder="HD-XXXX"/>
                     <div
                       *ngIf="!contractFormValue.code.valid && (contractFormValue.code.dirty||contractFormValue.code.touched)">
                       <div style="color: red" *ngIf="contractFormValue.code.hasError('required')">Không được bỏ trống
                       </div>
-                      <!--                      <div style="color: red"*ngIf="facilityFormValue.name.hasError('pattern')">Không đúng định dạng</div>-->
+                      <div style="color: red" *ngIf="contractFormValue.code.hasError('pattern')">Không đúng định dạng
+                      </div>
                     </div>
                   </div>
-
                 </div>
                 <div class="col-md-6 mb-4 pb-2">
 
                   <div class="form-outline">
                     <label class="form-label" for="deposit">Tiền đặt cọc</label>
-                    <input type="text" id="deposit" class="form-control form-control-lg" formControlName="deposit"/>
+                    <input type="number" id="deposit" class="form-control form-control-lg" formControlName="deposit"/>
                     <div
                       *ngIf="!contractFormValue.deposit.valid && (contractFormValue.deposit.dirty||contractFormValue.deposit.touched)">
-                      <div style="color: red" *ngIf="contractFormValue.deposit.hasError('required')">Không được bỏ trống
+                      <div style="color: red" *ngIf="contractFormValue.deposit.hasError('required')">Không được bỏ
+                        trống
                       </div>
-                      <!--                      <div style="color: red" *ngIf="facilityFormValue.area.hasError('min')">Tuổi lớn hơn 18</div>-->
+                      <div style="color: red" *ngIf="contractFormValue.deposit.hasError('min')">Số lớn hơn 0
+                      </div>
                     </div>
-                  </div>
 
+                  </div>
                 </div>
               </div>
 
@@ -55,7 +58,6 @@
                       <div style="color: red" *ngIf="contractFormValue.startDate.hasError('required')">Không được bỏ
                         trống
                       </div>
-                      <!--                      <div style="color: red"*ngIf="facilityFormValue.name.hasError('pattern')">Không đúng định dạng</div>-->
                     </div>
                   </div>
                 </div>
@@ -71,7 +73,6 @@
                       <div style="color: red" *ngIf="contractFormValue.endDate.hasError('required')">Không được bỏ
                         trống
                       </div>
-                      <!--                      <div style="color: red"*ngIf="facilityFormValue.name.hasError('pattern')">Không đúng định dạng</div>-->
                     </div>
                   </div>
                 </div>
@@ -89,7 +90,8 @@
                   </div>
                   <div
                     *ngIf="!contractFormValue.customer.valid && (contractFormValue.customer.touched||contractFormValue.customer.dirty)">
-                    <div style="color: red" *ngIf="contractFormValue.customer.hasError('required')">Không được bỏ trống
+                    <div style="color: red" *ngIf="contractFormValue.customer.hasError('required')">Không được bỏ
+                      trống
                     </div>
                   </div>
                 </div>
@@ -107,7 +109,8 @@
                   </div>
                   <div
                     *ngIf="!contractFormValue.facility.valid && (contractFormValue.facility.touched||contractFormValue.facility.dirty)">
-                    <div style="color: red" *ngIf="contractFormValue.facility.hasError('required')">Không được bỏ trống
+                    <div style="color: red" *ngIf="contractFormValue.facility.hasError('required')">Không được bỏ
+                      trống
                     </div>
                   </div>
                 </div>

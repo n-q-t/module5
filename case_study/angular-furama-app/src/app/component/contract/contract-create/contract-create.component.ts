@@ -19,12 +19,12 @@ export class ContractCreateComponent implements OnInit {
   contract:Contract={};
   contractForm: FormGroup = new FormGroup({
     id: new FormControl(),
-    code: new FormControl('',[Validators.required]),
+    code: new FormControl('',[Validators.required,Validators.pattern("^HD-[0-9]{4}$")]),
     customer: new FormControl('',[Validators.required]),
     facility: new FormControl('',[Validators.required]),
     startDate: new FormControl('',[Validators.required]),
     endDate: new FormControl('',[Validators.required]),
-    deposit: new FormControl('',[Validators.required]),
+    deposit: new FormControl('',[Validators.required,Validators.min(0)]),
   });
 
   constructor(private customerService: CustomerService, private facilityService: FacilityService, private router: Router,private contractService:ContractService) {

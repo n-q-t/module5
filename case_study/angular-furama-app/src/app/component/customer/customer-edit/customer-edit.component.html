@@ -21,7 +21,8 @@
                       *ngIf="!customerFormValue.code.valid && (customerFormValue.code.dirty||customerFormValue.code.touched)">
                       <div style="color: red" *ngIf="customerFormValue.code.hasError('required')">Không được bỏ trống
                       </div>
-                      <!--                      <div style="color: red"*ngIf="facilityFormValue.name.hasError('pattern')">Không đúng định dạng</div>-->
+                      <div style="color: red" *ngIf="customerFormValue.code.hasError('pattern')">Không đúng định dạng
+                      </div>
                     </div>
                   </div>
 
@@ -35,7 +36,10 @@
                       *ngIf="!customerFormValue.name.valid && (customerFormValue.name.dirty||customerFormValue.name.touched)">
                       <div style="color: red" *ngIf="customerFormValue.name.hasError('required')">Không được bỏ trống
                       </div>
-                      <!--                      <div style="color: red" *ngIf="facilityFormValue.area.hasError('min')">Tuổi lớn hơn 18</div>-->
+                      <div style="color: red" *ngIf="customerFormValue.name.hasError('pattern')">Không đúng định dạng
+                      </div>
+                      <div style="color: red" *ngIf="customerFormValue.name.hasError('maxlength')">Không quá 50 kí tự
+                      </div>
                     </div>
                   </div>
 
@@ -55,7 +59,6 @@
                       <div style="color: red" *ngIf="customerFormValue.dateOfBirth.hasError('required')">Không được bỏ
                         trống
                       </div>
-                      <!--                      <div style="color: red"*ngIf="facilityFormValue.name.hasError('pattern')">Không đúng định dạng</div>-->
                     </div>
                   </div>
                 </div>
@@ -66,19 +69,19 @@
                   <h6 class="mb-2 pb-1">Giới tính: </h6>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" checked type="radio"  id="maleGender"
+                    <input class="form-check-input" checked type="radio" id="maleGender"
                            value="Nam" formControlName="gender"/>
                     <label class="form-check-label" for="maleGender">Nam</label>
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio"  id="femaleGender"
+                    <input class="form-check-input" type="radio" id="femaleGender"
                            value="Nữ" formControlName="gender"/>
                     <label class="form-check-label" for="femaleGender">Nữ</label>
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio"  id="otherGender"
+                    <input class="form-check-input" type="radio" id="otherGender"
                            value="Khác" formControlName="gender"/>
                     <label class="form-check-label" for="otherGender">Khác</label>
                   </div>
@@ -104,7 +107,9 @@
                       <div style="color: red" *ngIf="customerFormValue.idCard.hasError('required')">Không được bỏ
                         trống
                       </div>
-                      <!--                      <div style="color: red" *ngIf="facilityFormValue.cost.hasError('minlength')">Ít nhất 6 kí tự</div>-->
+                      <div style="color: red" *ngIf="customerFormValue.idCard.hasError('pattern')">Gồm 9 hoặc 12 chữ
+                        số
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -120,7 +125,9 @@
                       <div style="color: red" *ngIf="customerFormValue.phoneNumber.hasError('required')">Không được bỏ
                         trống
                       </div>
-                      <!--                      <div style="color: red" *ngIf="facilityFormValue.area.hasError('min')">Tuổi lớn hơn 18</div>-->
+                      <div style="color: red" *ngIf="customerFormValue.phoneNumber.hasError('pattern')">Không đúng định
+                        dạng
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -134,9 +141,8 @@
                     <input type="email" class="form-control form-control-lg" id="email" formControlName="email"/>
                     <div
                       *ngIf="!customerFormValue.email.valid && (customerFormValue.email.dirty||customerFormValue.email.touched)">
-                      <div style="color: red" *ngIf="customerFormValue.email.hasError('required')">Không được bỏ trống
-                      </div>
-                      <!--                      <div style="color: red" *ngIf="facilityFormValue.cost.hasError('minlength')">Ít nhất 6 kí tự</div>-->
+                      <div style="color: red" *ngIf="customerFormValue.email.hasError('required')">Không được bỏ trống</div>
+                      <div style="color: red" *ngIf="customerFormValue.email.hasError('pattern')">Không đúng định dạng</div>
                     </div>
                   </div>
                 </div>
@@ -150,7 +156,6 @@
                       <div style="color: red" *ngIf="customerFormValue.address.hasError('required')">Không được bỏ
                         trống
                       </div>
-                      <!--                      <div style="color: red" *ngIf="facilityFormValue.area.hasError('min')">Tuổi lớn hơn 18</div>-->
                     </div>
                   </div>
                 </div>
@@ -161,8 +166,9 @@
                 <div class="col-md-12">
                   <div class="form-outline">
                     <label class="form-label "> </label>
-                    <select class="form-select form-control-lg" formControlName="customerType" [compareWith]="compareWith">
-                      <option value="" >--Loại khách--</option>
+                    <select class="form-select form-control-lg" formControlName="customerType"
+                            [compareWith]="compareWith">
+                      <option value="">--Loại khách--</option>
                       <option *ngFor="let c of customerTypes" [ngValue]="c" [text]="c.name"></option>
                     </select>
                   </div>
@@ -176,7 +182,6 @@
               </div>
 
 
-
               <div class="row">
                 <div class="mt-4 pt-2">
                   <button type="button" class="btn btn-primary btn-lg" style="margin-left: 200px"
@@ -187,7 +192,6 @@
                   </button>
                 </div>
               </div>
-
 
 
             </form>

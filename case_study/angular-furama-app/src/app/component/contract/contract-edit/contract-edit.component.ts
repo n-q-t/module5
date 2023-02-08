@@ -19,12 +19,12 @@ export class ContractEditComponent implements OnInit {
   contract:Contract={};
   contractForm: FormGroup = new FormGroup({
     id: new FormControl(),
-    code: new FormControl('',[Validators.required]),
+    code: new FormControl('',[Validators.required,Validators.pattern("^HD-[0-9]{4}$")]),
     customer: new FormControl('',[Validators.required]),
     facility: new FormControl('',[Validators.required]),
     startDate: new FormControl('',[Validators.required]),
     endDate: new FormControl('',[Validators.required]),
-    deposit: new FormControl('',[Validators.required]),
+    deposit: new FormControl('',[Validators.required,Validators.min(0)]),
   });
 
   constructor(private customerService: CustomerService, private facilityService: FacilityService, private router: Router,private contractService:ContractService,private activatedRoute:ActivatedRoute) {
@@ -65,7 +65,7 @@ export class ContractEditComponent implements OnInit {
     this.contract=this.contractForm.value;
     console.log(this.contract);
     this.contractService.updateContract(this.contract).subscribe(data=>{
-      alert('Thêm thành công');
+      alert('Sửa thành công');
       this.router.navigateByUrl('/contract');
     })
   }
