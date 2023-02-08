@@ -2,12 +2,11 @@ import {Customer} from '../customer/customer';
 import {Facility} from '../facility/facility';
 
 export interface Contract {
-  id:number;
-  startDate:string;
-  endDate:string;
-  deposit:number;
+  id?:number;
+  code?:string;
+  startDate?:string;
+  endDate?:string;
+  deposit?:string;
   customer?:Customer;
-  customerDemo:string;
   facility?:Facility;
-  facilityDemo:string;
 }

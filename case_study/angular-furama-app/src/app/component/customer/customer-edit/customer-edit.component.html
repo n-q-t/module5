@@ -1,0 +1,201 @@
+<app-nar-bar></app-nar-bar>
+
+<section class="vh-90 gradient-custom" style="background-color: lightblue">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h3 style="text-align: center">Sửa thông tin khách hàng</h3>
+            <form [formGroup]="customerForm" (ngSubmit)="editCustomer()">
+
+              <input hidden formControlName="id">
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="code">Mã khách hàng</label>
+                    <input type="text" id="code" class="form-control form-control-lg" formControlName="code"/>
+                    <div
+                      *ngIf="!customerFormValue.code.valid && (customerFormValue.code.dirty||customerFormValue.code.touched)">
+                      <div style="color: red" *ngIf="customerFormValue.code.hasError('required')">Không được bỏ trống
+                      </div>
+                      <!--                      <div style="color: red"*ngIf="facilityFormValue.name.hasError('pattern')">Không đúng định dạng</div>-->
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="name">Tên khách hàng</label>
+                    <input type="text" id="name" class="form-control form-control-lg" formControlName="name"/>
+                    <div
+                      *ngIf="!customerFormValue.name.valid && (customerFormValue.name.dirty||customerFormValue.name.touched)">
+                      <div style="color: red" *ngIf="customerFormValue.name.hasError('required')">Không được bỏ trống
+                      </div>
+                      <!--                      <div style="color: red" *ngIf="facilityFormValue.area.hasError('min')">Tuổi lớn hơn 18</div>-->
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="dateOfBirth">Ngày sinh</label>
+                    <input type="date" id="dateOfBirth" class="form-control form-control-lg"
+                           formControlName="dateOfBirth"/>
+                    <div
+                      *ngIf="!customerFormValue.dateOfBirth.valid && (customerFormValue.dateOfBirth.dirty||customerFormValue.dateOfBirth.touched)">
+                      <div style="color: red" *ngIf="customerFormValue.dateOfBirth.hasError('required')">Không được bỏ
+                        trống
+                      </div>
+                      <!--                      <div style="color: red"*ngIf="facilityFormValue.name.hasError('pattern')">Không đúng định dạng</div>-->
+                    </div>
+                  </div>
+                </div>
+
+                <!--                Chọn giới tính-->
+
+                <div class="col-md-6 mb-4">
+                  <h6 class="mb-2 pb-1">Giới tính: </h6>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" checked type="radio"  id="maleGender"
+                           value="Nam" formControlName="gender"/>
+                    <label class="form-check-label" for="maleGender">Nam</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio"  id="femaleGender"
+                           value="Nữ" formControlName="gender"/>
+                    <label class="form-check-label" for="femaleGender">Nữ</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio"  id="otherGender"
+                           value="Khác" formControlName="gender"/>
+                    <label class="form-check-label" for="otherGender">Khác</label>
+                  </div>
+
+                  <div
+                    *ngIf="!customerFormValue.gender.valid && (customerFormValue.gender.pristine||customerFormValue.gender.dirty||customerFormValue.gender.touched)">
+                    <div style="color: red" *ngIf="customerFormValue.gender.hasError('required')">Không được bỏ trống
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                  <div class="form-outline datepicker w-100">
+                    <label for="idCard" class="form-label">CMND</label>
+                    <input type="text" class="form-control form-control-lg" id="idCard" formControlName="idCard"/>
+                    <div
+                      *ngIf="!customerFormValue.idCard.valid && (customerFormValue.idCard.dirty||customerFormValue.idCard.touched)">
+                      <div style="color: red" *ngIf="customerFormValue.idCard.hasError('required')">Không được bỏ
+                        trống
+                      </div>
+                      <!--                      <div style="color: red" *ngIf="facilityFormValue.cost.hasError('minlength')">Ít nhất 6 kí tự</div>-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="phoneNumber">Số điện thoại</label>
+                    <input type="text" id="phoneNumber" class="form-control form-control-lg"
+                           formControlName="phoneNumber"/>
+                    <div
+                      *ngIf="!customerFormValue.phoneNumber.valid && (customerFormValue.phoneNumber.dirty||customerFormValue.phoneNumber.touched)">
+                      <div style="color: red" *ngIf="customerFormValue.phoneNumber.hasError('required')">Không được bỏ
+                        trống
+                      </div>
+                      <!--                      <div style="color: red" *ngIf="facilityFormValue.area.hasError('min')">Tuổi lớn hơn 18</div>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+                  <div class="form-outline datepicker w-100">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control form-control-lg" id="email" formControlName="email"/>
+                    <div
+                      *ngIf="!customerFormValue.email.valid && (customerFormValue.email.dirty||customerFormValue.email.touched)">
+                      <div style="color: red" *ngIf="customerFormValue.email.hasError('required')">Không được bỏ trống
+                      </div>
+                      <!--                      <div style="color: red" *ngIf="facilityFormValue.cost.hasError('minlength')">Ít nhất 6 kí tự</div>-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4 pb-2">
+                  <div class="form-outline">
+                    <label class="form-label" for="address">Địa chỉ:</label>
+                    <input type="text" id="address" class="form-control form-control-lg" formControlName="address"/>
+                    <div
+                      *ngIf="!customerFormValue.address.valid && (customerFormValue.address.dirty||customerFormValue.address.touched)">
+                      <div style="color: red" *ngIf="customerFormValue.address.hasError('required')">Không được bỏ
+                        trống
+                      </div>
+                      <!--                      <div style="color: red" *ngIf="facilityFormValue.area.hasError('min')">Tuổi lớn hơn 18</div>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-outline">
+                    <label class="form-label "> </label>
+                    <select class="form-select form-control-lg" formControlName="customerType" [compareWith]="compareWith">
+                      <option value="" >--Loại khách--</option>
+                      <option *ngFor="let c of customerTypes" [ngValue]="c" [text]="c.name"></option>
+                    </select>
+                  </div>
+                  <div
+                    *ngIf="!customerFormValue.customerType.valid && (customerFormValue.customerType.touched||customerFormValue.customerType.dirty)">
+                    <div style="color: red" *ngIf="customerFormValue.customerType.hasError('required')">Không được bỏ
+                      trống
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="mt-4 pt-2">
+                  <button type="button" class="btn btn-primary btn-lg" style="margin-left: 200px"
+                          routerLink="/customer">Quay lại
+                  </button>
+                  <button type="submit" class="btn btn-primary btn-lg" style="margin-left: 40px"
+                          [disabled]="!customerForm.valid"> Sửa
+                  </button>
+                </div>
+              </div>
+
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

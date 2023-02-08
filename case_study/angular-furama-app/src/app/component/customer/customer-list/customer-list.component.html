@@ -1,0 +1,66 @@
+<app-nar-bar></app-nar-bar>
+<div class="container">
+<a routerLink="/customer/create" class="btn btn-primary" style="float: right;margin: 10px;margin-right: 20px" >Thêm mới</a>
+
+<div  >
+  <table class="table table-info">
+    <thead>
+    <tr >
+      <th scope="col">STT</th>
+      <th scope="col">Mã khách hàng</th>
+      <th scope="col">Tên</th>
+      <th scope="col">Ngày sinh</th>
+      <th scope="col">Giới tính</th>
+      <th scope="col">CMND</th>
+      <th scope="col">SDT</th>
+      <th scope="col">Email</th>
+      <th scope="col">Địa chỉ</th>
+      <th scope="col">Loại khách hàng</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  *ngFor="let c of customers,index as i">
+      <td >{{i+1}}</td>
+      <td >{{c.code}}</td>
+      <td >{{c.name}}</td>
+      <td >{{c.dateOfBirth}}</td>
+      <td >{{c.gender}}</td>
+      <td >{{c.idCard}}</td>
+      <td >{{c.phoneNumber}}</td>
+      <td >{{c.email}}</td>
+      <td >{{c.address}}</td>
+      <td >{{c.customerType?.name}}</td>
+      <td><a [routerLink]="['/customer/edit',c.id]" class="btn btn-warning" >Edit</a></td>
+      <td>
+        <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"  (click)="customer=c">
+          Delete
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Xóa khách hàng</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input name="deleteId" hidden id="deleteId">
+          Bạn có muốn xóa khách hàng có tên: {{customer.name}}?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
+          <button type="submit" class="btn btn-danger" (click)="deleteCustomer(customer.id)">Xóa</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
