@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0px">
+  <div class="container-fluid" style="margin-left: 100px" style="background-color: green;height: 50px">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/" style="color: white">Home</a>
+        </li>
+        </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="text" placeholder="Tên" aria-label="Search" #searchName>
+        <select class="form-control me-2" #searchClazzName>
+          <option value="">--Loại khách hàng--</option>
+          <option *ngFor="let c of clazzs" [ngValue]="c.name" [text]="c.name"></option>
+        </select>
+        <!--        <input class="form-control me-2" type="search" placeholder="Loại khách" aria-label="Search" #searchCustomerType>-->
+        <button class="btn btn-info" type="button" style="margin-right: 100px"
+                (click)="search(searchName.value,searchClazzName.value)">Search
+        </button>
+      </form>
+
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <a routerLink="/create" class="btn btn-primary" style="float: right;margin: 10px;margin-right: 20px">Thêm
+    mới</a>
+
+  <div>
+    <table class="table table-info">
+      <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Mã học sinh</th>
+        <th scope="col">Tên</th>
+        <th scope="col">Ngày sinh</th>
+        <th scope="col">Giới tính</th>
+        <th scope="col">Địa chỉ</th>
+        <th scope="col">Lớp</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let s of students | paginate: { itemsPerPage: 5, currentPage: p },index as i ">
+        <td>{{i + 1}}</td>
+        <td>{{s.code}}</td>
+        <td>{{s.name}}</td>
+        <td>{{s.dayOfBirth| date:"dd/MM/yyyy"}}</td>
+        <td>{{s.gender}}</td>
+        <td>{{s.address}}</td>
+        <td>{{s.clazz?.name}}</td>
+        <td><a [routerLink]="['/edit',s.id]" class="btn btn-warning">Edit</a></td>
+        <td>
+          <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="student=s">
+            Delete
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-left: 500px">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Xóa học sinh</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input name="deleteId" hidden id="deleteId">
+          Bạn có muốn xóa học sinh có tên: {{student.name}}?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
+          <button type="submit" class="btn btn-danger" (click)="deleteStudent(student.id)">Xóa</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

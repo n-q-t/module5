@@ -126,6 +126,26 @@
       "numberOfFloors": 0,
       "facilityFree": "1 xe máy",
       "flagDelete": false
+    },
+    {
+      "id": 7,
+      "name": "Villa Beach",
+      "area": 1000,
+      "cost": "2000",
+      "maxPeople": 10,
+      "standardRoom": "vip",
+      "desciption": "không",
+      "poolArea": "100",
+      "numberOfFloors": 3,
+      "facilityFree": "",
+      "facilityType": {
+        "id": 2,
+        "name": "House"
+      },
+      "rentType": {
+        "id": 4,
+        "name": "hour"
+      }
     }
   ],
   "facility-type": [
@@ -298,7 +318,7 @@
   "contract": [
     {
       "id": 1,
-      "code": "HD-0009",
+      "code": "HD-1234",
       "startDate": "2020-12-08",
       "endDate": "2020-12-08",
       "deposit": 0,
@@ -317,7 +337,7 @@
     },
     {
       "id": 2,
-      "code": "HD-001",
+      "code": "HD-1111",
       "startDate": "2020-07-14",
       "endDate": "2020-07-21",
       "deposit": 200000,

@@ -1,46 +1,90 @@
-<app-nar-bar></app-nar-bar>
-<div class="container">
-<a routerLink="/customer/create" class="btn btn-primary" style="float: right;margin: 10px;margin-right: 20px" >Thêm mới</a>
+<!--<app-nar-bar></app-nar-bar>-->
 
-<div  >
-  <table class="table table-info">
-    <thead>
-    <tr >
-      <th scope="col">STT</th>
-      <th scope="col">Mã khách hàng</th>
-      <th scope="col">Tên</th>
-      <th scope="col">Ngày sinh</th>
-      <th scope="col">Giới tính</th>
-      <th scope="col">CMND</th>
-      <th scope="col">SDT</th>
-      <th scope="col">Email</th>
-      <th scope="col">Địa chỉ</th>
-      <th scope="col">Loại khách hàng</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr  *ngFor="let c of customers,index as i">
-      <td >{{i+1}}</td>
-      <td >{{c.code}}</td>
-      <td >{{c.name}}</td>
-      <td >{{c.dateOfBirth| date:"dd/MM/yyyy"}}</td>
-      <td >{{c.gender}}</td>
-      <td >{{c.idCard}}</td>
-      <td >{{c.phoneNumber}}</td>
-      <td >{{c.email}}</td>
-      <td >{{c.address}}</td>
-      <td >{{c.customerType?.name}}</td>
-      <td><a [routerLink]="['/customer/edit',c.id]" class="btn btn-warning" >Edit</a></td>
-      <td>
-        <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"  (click)="customer=c">
-          Delete
-        </a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0px" >
+  <div class="container-fluid" style="margin-left: 100px" style="background-color: green;height: 50px">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/" style="color: white">Home</a>
+        </li>
+        <li class="nav-item"  style="margin-left: 30px">
+          <a class="nav-link active"   style="color: white">Employee</a>
+        </li>
+        <li class="nav-item" style="margin-left: 30px">
+          <a class="nav-link active" style="color: white" routerLink="/customer">Customer</a>
+        </li>
+        <li class="nav-item" style="margin-left: 30px">
+          <a class="nav-link active" style="color: white" routerLink="/facility">Facility</a>
+        </li>
+        <li class="nav-item" style="margin-left: 30px">
+          <a class="nav-link active" style="color: white" routerLink="/contract">Contract</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="text" placeholder="Tên" aria-label="Search" #searchName>
+        <select  class="form-control me-2" #searchCustomerType >
+          <option value="" >--Loại khách hàng--</option>
+          <option *ngFor="let c of customerTypes" [ngValue]="c.name" [text]="c.name"></option>
+        </select>
+<!--        <input class="form-control me-2" type="search" placeholder="Loại khách" aria-label="Search" #searchCustomerType>-->
+        <button class="btn btn-info" type="button" style="margin-right: 100px" (click)="search(searchName.value,searchCustomerType.value)">Search</button>
+      </form>
+
+    </div>
+  </div>
+</nav>
+
+
+
+
+<div class="container">
+  <a routerLink="/customer/create" class="btn btn-primary" style="float: right;margin: 10px;margin-right: 20px">Thêm
+    mới</a>
+
+  <div>
+    <table class="table table-info">
+      <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Mã khách hàng</th>
+        <th scope="col">Tên</th>
+        <th scope="col">Ngày sinh</th>
+        <th scope="col">Giới tính</th>
+        <th scope="col">CMND</th>
+        <th scope="col">SDT</th>
+        <th scope="col">Email</th>
+        <th scope="col">Địa chỉ</th>
+        <th scope="col">Loại khách hàng</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let c of customers | paginate: { itemsPerPage: 5, currentPage: p },index as i ">
+        <td>{{i + 1}}</td>
+        <td>{{c.code}}</td>
+        <td>{{c.name}}</td>
+        <td>{{c.dateOfBirth| date:"dd/MM/yyyy"}}</td>
+        <td>{{c.gender}}</td>
+        <td>{{c.idCard}}</td>
+        <td>{{c.phoneNumber}}</td>
+        <td>{{c.email}}</td>
+        <td>{{c.address}}</td>
+        <td>{{c.customerType?.name}}</td>
+        <td><a [routerLink]="['/customer/edit',c.id]" class="btn btn-warning">Edit</a></td>
+        <td>
+          <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="customer=c">
+            Delete
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-left: 500px">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
 </div>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -63,4 +107,6 @@
     </form>
   </div>
 </div>
-</div>
+<!--  <div class="text-right">-->
+<!--    <pagination-controls (pageChange)="p = $event"></pagination-controls>-->
+<!--  </div>-->

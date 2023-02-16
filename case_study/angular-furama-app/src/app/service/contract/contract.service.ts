@@ -30,4 +30,8 @@ export class ContractService {
     return this.httpClient.patch(this.URL_CONTRACT+'/'+contract.id,contract);
 
   }
+
+  search(value: string) {
+    return this.httpClient.get<Contract[]>(this.URL_CONTRACT+'?code_like='+value);
+  }
 }

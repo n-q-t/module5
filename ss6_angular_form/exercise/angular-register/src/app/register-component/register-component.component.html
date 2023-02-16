@@ -5,18 +5,18 @@
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5" style="text-align: center">Registration Form</h3>
-            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" >
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
 
-<!--              <div class="row">-->
-<!--                <div class="col-md-12 mb-4">-->
+              <!--              <div class="row">-->
+              <!--                <div class="col-md-12 mb-4">-->
 
-<!--                  <div class="form-outline">-->
-<!--                    <label class="form-label" for="firstName">First Name</label>-->
-<!--                    <input type="text" id="firstName" class="form-control form-control-lg" />-->
-<!--                  </div>-->
+              <!--                  <div class="form-outline">-->
+              <!--                    <label class="form-label" for="firstName">First Name</label>-->
+              <!--                    <input type="text" id="firstName" class="form-control form-control-lg" />-->
+              <!--                  </div>-->
 
-<!--                </div>-->
-<!--              </div>-->
+              <!--                </div>-->
+              <!--              </div>-->
 
               <div class="row">
                 <div class="col-md-6 mb-4 pb-2">
@@ -24,125 +24,126 @@
                   <div class="form-outline">
                     <label class="form-label" for="emailAddress">Email</label>
                     <input type="email" id="emailAddress" class="form-control form-control-lg" formControlName="email"/>
-                    <div *ngIf="!contactFormValue.email.valid && (contactFormValue.country.pristine||contactFormValue.email.dirty||contactFormValue.email.touched)">
-                      <div style="color: red"*ngIf="contactFormValue.email.hasError('required')">Không được bỏ trống</div>
-                      <div style="color: red"*ngIf="contactFormValue.email.hasError('pattern')">Không đúng định dạng</div>
+                    <div *ngIf="!contactFormValue.email.valid && (contactFormValue.email.dirty)">
+                      <div style="color: red" *ngIf="contactFormValue.email.hasError('required')">Không được bỏ trống
+                      </div>
+                      <div style="color: red" *ngIf="contactFormValue.email.hasError('pattern')">Không đúng định dạng
+                      </div>
                     </div>
                   </div>
 
                 </div>
-                <div class="col-md-6 mb-4 pb-2">
+                <!--                <div class="col-md-6 mb-4 pb-2">-->
 
-                  <div class="form-outline">
-                    <label class="form-label" for="phoneNumber">Age</label>
-                    <input type="number" id="phoneNumber" class="form-control form-control-lg" formControlName="age"/>
-                    <div *ngIf="!contactFormValue.age.valid && (contactFormValue.country.pristine||contactFormValue.age.dirty||contactFormValue.age.touched)">
-                      <div style="color: red" *ngIf="contactFormValue.age.hasError('required')">Không được bỏ trống</div>
-                      <div style="color: red" *ngIf="contactFormValue.age.hasError('min')">Tuổi lớn hơn 18</div>
-                    </div>
-                  </div>
+                <!--                  <div class="form-outline">-->
+                <!--                    <label class="form-label" for="phoneNumber">Age</label>-->
+                <!--                    <input type="number" id="phoneNumber" class="form-control form-control-lg" formControlName="age"/>-->
+                <!--                    <div *ngIf="!contactFormValue.age.valid && (contactFormValue.country.pristine||contactFormValue.age.dirty||contactFormValue.age.touched)">-->
+                <!--                      <div style="color: red" *ngIf="contactFormValue.age.hasError('required')">Không được bỏ trống</div>-->
+                <!--                      <div style="color: red" *ngIf="contactFormValue.age.hasError('min')">Tuổi lớn hơn 18</div>-->
+                <!--                    </div>-->
+                <!--                  </div>-->
 
-                </div>
-              </div>
-
-
-
-              <div class="row">
-                <div class="col-md-6 mb-4 d-flex align-items-center">
-
-                  <div class="form-outline datepicker w-100">
-                    <label for="birthdayDate" class="form-label">Password</label>
-                    <input type="password" class="form-control form-control-lg" id="birthdayDate" formControlName="password"/>
-                    <div *ngIf="!contactFormValue.password.valid && (contactFormValue.country.pristine||contactFormValue.password.dirty||contactFormValue.password.touched)">
-                      <div style="color: red" *ngIf="contactFormValue.password.hasError('required')">Không được bỏ trống</div>
-                      <div style="color: red" *ngIf="contactFormValue.password.hasError('minlength')">Ít nhất 6 kí tự</div>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="col-md-6 mb-4">
-
-                  <h6 class="mb-2 pb-1">Gender: </h6>
-
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                           value="option1"   formControlName="gender"/>
-                    <label class="form-check-label" for="femaleGender">Female</label>
-                  </div>
-
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="maleGender"
-                           value="option2" formControlName="gender"/>
-                    <label class="form-check-label" for="maleGender">Male</label>
-                  </div>
-
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
-                           value="option3" formControlName="gender"/>
-                    <label class="form-check-label" for="otherGender">Other</label>
-                  </div>
-
-                  <div *ngIf="!contactFormValue.gender.valid && (contactFormValue.country.pristine||contactFormValue.gender.dirty||contactFormValue.gender.touched)">
-                    <div style="color: red" *ngIf="contactFormValue.gender.hasError('required')">Không được bỏ trống</div>
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6 mb-4 pb-2">
-
-                  <div class="form-outline">
-                    <label class="form-label" for="emailAddress">Confirm Password</label>
-                    <input type="password"  class="form-control form-control-lg" formControlName="confirmPassword" (change)="onPasswordChange()"/>
-                    <div *ngIf="!contactFormValue.confirmPassword.valid && (contactFormValue.country.pristine||contactFormValue.confirmPassword.dirty||contactFormValue.password.touched)">
-                      <div style="color: red" *ngIf="contactFormValue.confirmPassword.hasError('required')">Không được bỏ trống</div>
-                      <div style="color: red" *ngIf="contactFormValue.confirmPassword.hasError('minlength')">Ít nhất 6 kí tự</div>
-                      <div style="color: red" *ngIf="contactFormValue.confirmPassword.hasError('mismatch')">Mật khẩu không khớp</div>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="col-md-6 mb-4 pb-2">
-
-                  <div class="form-outline">
-                    <label class="form-label" for="phoneNumber">Phone</label>
-                    <input type="tel"  class="form-control form-control-lg" formControlName="phone"/>
-                    <div *ngIf="!contactFormValue.phone.valid && (contactFormValue.country.pristine||contactFormValue.phone.dirty||contactFormValue.phone.touched)">
-                      <div style="color: red" *ngIf="contactFormValue.phone.hasError('required')">Không được bỏ trống</div>
-                      <div style="color: red" *ngIf="contactFormValue.phone.hasError('pattern')">Số điện thoai không đúng</div>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
+                <!--                </div>-->
+                <!--              </div>-->
 
 
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-outline">
-                  <label class="form-label ">Choose option</label>
+                <!--              <div class="row">-->
+                <!--                <div class="col-md-6 mb-4 d-flex align-items-center">-->
 
-                  <select class="form-select form-control-lg" formControlName="country">
-                    <option value="">Chọn quốc gia</option>
-                    <option *ngFor="let c of countrys" [ngValue]="c" [text]="c.name"></option>
-                  </select>
+                <!--                  <div class="form-outline datepicker w-100">-->
+                <!--                    <label for="birthdayDate" class="form-label">Password</label>-->
+                <!--                    <input type="password" class="form-control form-control-lg" id="birthdayDate" formControlName="password"/>-->
+                <!--                    <div *ngIf="!contactFormValue.password.valid && (contactFormValue.country.pristine||contactFormValue.password.dirty||contactFormValue.password.touched)">-->
+                <!--                      <div style="color: red" *ngIf="contactFormValue.password.hasError('required')">Không được bỏ trống</div>-->
+                <!--                      <div style="color: red" *ngIf="contactFormValue.password.hasError('minlength')">Ít nhất 6 kí tự</div>-->
+                <!--                    </div>-->
+                <!--                  </div>-->
 
-                  </div>
-                  <div *ngIf="!contactFormValue.country.valid && (contactFormValue.country.pristine||contactFormValue.country.touched||contactFormValue.country.dirty)">
-                    <div style="color: red" *ngIf="contactFormValue.country.hasError('required')">Không được bỏ trống</div>
-                  </div>
+                <!--                </div>-->
+                <!--                <div class="col-md-6 mb-4">-->
+
+                <!--                  <h6 class="mb-2 pb-1">Gender: </h6>-->
+
+                <!--                  <div class="form-check form-check-inline">-->
+                <!--                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"-->
+                <!--                           value="option1"   formControlName="gender"/>-->
+                <!--                    <label class="form-check-label" for="femaleGender">Female</label>-->
+                <!--                  </div>-->
+
+                <!--                  <div class="form-check form-check-inline">-->
+                <!--                    <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="maleGender"-->
+                <!--                           value="option2" formControlName="gender"/>-->
+                <!--                    <label class="form-check-label" for="maleGender">Male</label>-->
+                <!--                  </div>-->
+
+                <!--                  <div class="form-check form-check-inline">-->
+                <!--                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"-->
+                <!--                           value="option3" formControlName="gender"/>-->
+                <!--                    <label class="form-check-label" for="otherGender">Other</label>-->
+                <!--                  </div>-->
+
+                <!--                  <div *ngIf="!contactFormValue.gender.valid && (contactFormValue.country.pristine||contactFormValue.gender.dirty||contactFormValue.gender.touched)">-->
+                <!--                    <div style="color: red" *ngIf="contactFormValue.gender.hasError('required')">Không được bỏ trống</div>-->
+                <!--                  </div>-->
+
+                <!--                </div>-->
+                <!--              </div>-->
+
+                <!--              <div class="row">-->
+                <!--                <div class="col-md-6 mb-4 pb-2">-->
+
+                <!--                  <div class="form-outline">-->
+                <!--                    <label class="form-label" for="emailAddress">Confirm Password</label>-->
+                <!--                    <input type="password"  class="form-control form-control-lg" formControlName="confirmPassword" (change)="onPasswordChange()"/>-->
+                <!--                    <div *ngIf="!contactFormValue.confirmPassword.valid && (contactFormValue.country.pristine||contactFormValue.confirmPassword.dirty||contactFormValue.password.touched)">-->
+                <!--                      <div style="color: red" *ngIf="contactFormValue.confirmPassword.hasError('required')">Không được bỏ trống</div>-->
+                <!--                      <div style="color: red" *ngIf="contactFormValue.confirmPassword.hasError('minlength')">Ít nhất 6 kí tự</div>-->
+                <!--                      <div style="color: red" *ngIf="contactFormValue.confirmPassword.hasError('mismatch')">Mật khẩu không khớp</div>-->
+                <!--                    </div>-->
+                <!--                  </div>-->
+
+                <!--                </div>-->
+                <!--                <div class="col-md-6 mb-4 pb-2">-->
+
+                <!--                  <div class="form-outline">-->
+                <!--                    <label class="form-label" for="phoneNumber">Phone</label>-->
+                <!--                    <input type="tel"  class="form-control form-control-lg" formControlName="phone"/>-->
+                <!--                    <div *ngIf="!contactFormValue.phone.valid && (contactFormValue.country.pristine||contactFormValue.phone.dirty||contactFormValue.phone.touched)">-->
+                <!--                      <div style="color: red" *ngIf="contactFormValue.phone.hasError('required')">Không được bỏ trống</div>-->
+                <!--                      <div style="color: red" *ngIf="contactFormValue.phone.hasError('pattern')">Số điện thoai không đúng</div>-->
+                <!--                    </div>-->
+
+                <!--                  </div>-->
+
+                <!--                </div>-->
+                <!--              </div>-->
 
 
-                </div>
-              </div>
+                <!--              <div class="row">-->
+                <!--                <div class="col-md-12">-->
+                <!--                  <div class="form-outline">-->
+                <!--                  <label class="form-label ">Choose option</label>-->
 
-              <div class="mt-4 pt-2" style="text-align: center">
-<!--                <input class="btn btn-primary btn-lg" type="submit" value="Submit" [disabled]="!contactForm.valid"/>-->
-                <div *ngIf="contactForm.valid">
-                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                </div>
+                <!--                  <select class="form-select form-control-lg" formControlName="country">-->
+                <!--                    <option value="">Chọn quốc gia</option>-->
+                <!--                    <option *ngFor="let c of countrys" [ngValue]="c" [text]="c.name"></option>-->
+                <!--                  </select>-->
+
+                <!--                  </div>-->
+                <!--                  <div *ngIf="!contactFormValue.country.valid && (contactFormValue.country.pristine||contactFormValue.country.touched||contactFormValue.country.dirty)">-->
+                <!--                    <div style="color: red" *ngIf="contactFormValue.country.hasError('required')">Không được bỏ trống</div>-->
+                <!--                  </div>-->
+
+
+                <!--                </div>-->
+                <!--              </div>-->
+
+                <!--              <div class="mt-4 pt-2" style="text-align: center">-->
+                <!--&lt;!&ndash;                <input class="btn btn-primary btn-lg" type="submit" value="Submit" [disabled]="!contactForm.valid"/>&ndash;&gt;-->
+                <!--                <div >-->
+                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                <!--                </div>-->
               </div>
 
             </form>

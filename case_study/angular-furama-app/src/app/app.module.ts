@@ -7,9 +7,9 @@ import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
 import { HttpClientModule} from '@angular/common/http';
-import {CustomerModule} from './component/customer/customer.module';
-import {FacilityModule} from './component/facility/facility.module';
-import {ContractModule} from './component/contract/contract.module';
+import {CustomerModule} from './module/customer/customer.module';
+import {FacilityModule} from './module/facility/facility.module';
+import {ContractModule} from './module/contract/contract.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +23,7 @@ import {ContractModule} from './component/contract/contract.module';
     CustomerModule,
     FacilityModule,
     ContractModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   exports: [

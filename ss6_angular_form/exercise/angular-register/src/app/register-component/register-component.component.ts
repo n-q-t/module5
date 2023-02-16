@@ -13,12 +13,12 @@ export class RegisterComponentComponent implements OnInit {
   constructor() {
     this.contactForm = new FormGroup({
         email: new FormControl('',[Validators.required,Validators.pattern("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$")]),
-        password: new FormControl('',[Validators.minLength(6),Validators.required]),
-        confirmPassword: new FormControl('',[Validators.minLength(6),Validators.required]),
-        country: new FormControl('',[Validators.required]),
-        age: new FormControl('',[Validators.min(18),Validators.required]),
-        gender: new FormControl('',[Validators.required]),
-        phone: new FormControl('',[Validators.required,Validators.pattern("^\\+84\\d{9,10}$")]),
+      //   password: new FormControl('',[Validators.minLength(6),Validators.required]),
+      //   confirmPassword: new FormControl('',[Validators.minLength(6),Validators.required]),
+      //   country: new FormControl('',[Validators.required]),
+      //   age: new FormControl('',[Validators.min(18),Validators.required]),
+      //   gender: new FormControl('',[Validators.required]),
+      //   phone: new FormControl('',[Validators.required,Validators.pattern("^\\+84\\d{9,10}$")]),
       }
     )
   }

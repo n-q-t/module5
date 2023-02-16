@@ -1,4 +1,39 @@
-<app-nar-bar></app-nar-bar>
+<!--<app-nar-bar></app-nar-bar>-->
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0px" >
+  <div class="container-fluid" style="margin-left: 100px" style="background-color: green;height: 50px">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/" style="color: white">Home</a>
+        </li>
+        <li class="nav-item"  style="margin-left: 30px">
+          <a class="nav-link active"   style="color: white">Employee</a>
+        </li>
+        <li class="nav-item" style="margin-left: 30px">
+          <a class="nav-link active" style="color: white" routerLink="/customer">Customer</a>
+        </li>
+        <li class="nav-item" style="margin-left: 30px">
+          <a class="nav-link active" style="color: white" routerLink="/facility">Facility</a>
+        </li>
+        <li class="nav-item" style="margin-left: 30px">
+          <a class="nav-link active" style="color: white" routerLink="/contract">Contract</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" #Search>
+        <button class="btn btn-info" type="button" style="margin-right: 100px" (click)="searchByCode(Search.value)">Search</button>
+      </form>
+
+    </div>
+  </div>
+</nav>
+
+
+
+
 <div class="container">
   <a routerLink="/contract/create" class="btn btn-primary" style="float: right;margin: 10px;margin-right: 20px" >Thêm mới</a>
 
@@ -18,7 +53,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr  *ngFor="let c of contracts,index as i">
+      <tr  *ngFor="let c of contracts | paginate:{itemsPerPage:5,currentPage:p},index as i">
         <td >{{i+1}}</td>
         <td >{{c.code}}</td>
         <td >{{c.customer?.name}}</td>
@@ -36,6 +71,10 @@
       </tbody>
     </table>
   </div>
+  <div style="margin-left: 500px">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
 
   <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -57,5 +96,4 @@
       </form>
     </div>
   </div>
-</div>
 

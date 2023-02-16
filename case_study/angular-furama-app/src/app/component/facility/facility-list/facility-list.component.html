@@ -1,9 +1,41 @@
-<app-nar-bar></app-nar-bar>
+<!--<app-nar-bar></app-nar-bar>-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0px" >
+  <div class="container-fluid" style="margin-left: 100px" style="background-color: green;height: 50px">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/" style="color: white">Home</a>
+        </li>
+        <li class="nav-item"  style="margin-left: 30px">
+          <a class="nav-link active"   style="color: white">Employee</a>
+        </li>
+        <li class="nav-item" style="margin-left: 30px">
+          <a class="nav-link active" style="color: white" routerLink="/customer">Customer</a>
+        </li>
+        <li class="nav-item" style="margin-left: 30px">
+          <a class="nav-link active" style="color: white" routerLink="/facility">Facility</a>
+        </li>
+        <li class="nav-item" style="margin-left: 30px">
+          <a class="nav-link active" style="color: white" routerLink="/contract">Contract</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-info" type="submit" style="margin-right: 100px">Search</button>
+      </form>
+
+    </div>
+  </div>
+</nav>
+
+
 
 <button class="btn btn-primary " style="margin:10px 0px 5px 1380px" routerLink="/facility/create">Thêm mới</button>
 <div class="container">
   <div class="row">
-    <div class="col-4" *ngFor="let f of facilitys">
+    <div class="col-4" *ngFor="let f of facilitys | paginate:{ itemsPerPage: 6, currentPage: p }">
       <div class="card " style="margin-bottom: 10px">
         <img
           src="https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Studio-Suite-F-768x497.jpg"
@@ -24,15 +56,9 @@
 
 <div class="container">
   <div class="row">
-    <nav aria-label="Page navigation example">
-      <ul class="pagination" style="float: right;">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-      </ul>
-    </nav>
+    <div style="margin-left: 500px">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
   </div>
 </div>
 

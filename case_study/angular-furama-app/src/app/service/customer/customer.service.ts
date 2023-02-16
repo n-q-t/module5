@@ -29,4 +29,8 @@ export class CustomerService {
   deleteCustomer(id:any){
     return this.httpClient.delete(this.URL_CUSTOMER+'/'+id,id);
   }
+
+  search(name: string, customerType: string) {
+    return this.httpClient.get<Customer[]>(this.URL_CUSTOMER+'?name_like='+name+'&customerType.name='+customerType)
+  }
 }

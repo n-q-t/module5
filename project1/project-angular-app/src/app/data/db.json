@@ -1,0 +1,105 @@
+{
+  "benhnhan": [
+    {
+      "id": 3,
+      "ten": "Quoc Trung",
+      "ngayNhapVien": "2017-08-19",
+      "ngayRaVien": "2018-09-19",
+      "lyDo": "ung thư giai đoạn cuối",
+      "phuongPhap": "mổ",
+      "bacSi": "Lê Văn C",
+      "benhAn": {
+        "id": 3,
+        "ten": "suy thận"
+      }
+    },
+    {
+      "id": 4,
+      "ten": "Quoc Trung",
+      "ngayNhapVien": "2017-08-19",
+      "ngayRaVien": "2018-09-19",
+      "lyDo": "ung thư giai đoạn cuối",
+      "phuongPhap": "mổ",
+      "bacSi": "Lê Văn D",
+      "benhAn": {
+        "id": 4,
+        "ten": "suy thận"
+      }
+    },
+    {
+      "id": 5,
+      "ten": "Quoc Trung",
+      "ngayNhapVien": "2017-08-19",
+      "ngayRaVien": "2018-09-19",
+      "lyDo": "ung thư giai đoạn cuối",
+      "phuongPhap": "mổ",
+      "bacSi": "Lê Văn B",
+      "benhAn": {
+        "id": 5,
+        "ten": "suy thận"
+      }
+    },
+    {
+      "id": 6,
+      "ten": "Quoc Trung",
+      "ngayNhapVien": "2017-08-19",
+      "ngayRaVien": "2018-09-19",
+      "lyDo": "ung thư giai đoạn cuối",
+      "phuongPhap": "mổ",
+      "bacSi": "Lê Văn B",
+      "benhAn": {
+        "id": 6,
+        "ten": "suy thận"
+      }
+    },
+    {
+      "id": 7,
+      "ten": "Quoc Trung",
+      "ngayNhapVien": "2017-08-19",
+      "ngayRaVien": "2018-09-19",
+      "lyDo": "ung thư giai đoạn cuối",
+      "phuongPhap": "mổ",
+      "bacSi": "Lê Văn B",
+      "benhAn": {
+        "id": 7,
+        "ten": "suy thận"
+      }
+    },
+    {
+      "id": 8,
+      "ten": "Quoc Trung",
+      "ngayNhapVien": "2017-08-19",
+      "ngayRaVien": "2018-09-19",
+      "lyDo": "ung thư giai đoạn cuối",
+      "phuongPhap": "mổ",
+      "bacSi": "Lê Văn B",
+      "benhAn": {
+        "id": 8,
+        "ten": "suy thận"
+      }
+    },
+    {
+      "id": 9,
+      "ten": "Quoc Trung",
+      "ngayNhapVien": "2017-08-19",
+      "ngayRaVien": "2018-09-19",
+      "lyDo": "ung thư giai đoạn cuối",
+      "phuongPhap": "mổ",
+      "bacSi": "Lê Văn B",
+      "benhAn": {
+        "id": 9,
+        "ten": "suy thận"
+      }
+    }
+  ],
+  "benhan": [
+    {
+      "id": 1,
+      "ten": "ung thư"
+    },
+    {
+      "id": 2,
+      "ten": "suy thận"
+    }
+  ]
+}

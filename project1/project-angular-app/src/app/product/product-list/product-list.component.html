@@ -1,0 +1,67 @@
+<div class="container">
+  <a routerLink="/create" class="btn btn-primary" style="float: right;margin: 10px;margin-right: 20px">Thêm
+    mới</a>
+
+  <div>
+    <table class="table table-info">
+      <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Mã bệnh án</th>
+        <th scope="col">Mã bệnh nhân</th>
+        <th scope="col">Tên bệnh nhân</th>
+        <th scope="col">Ngày nhập viện</th>
+        <th scope="col">Ngày ra viện</th>
+        <th scope="col">Lí do nhập viện</th>
+        <th scope="col">Phương pháp điều trị</th>
+        <th scope="col">Bác sĩ</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let b of benhNhans ,index as i ">
+        <td>{{i + 1}}</td>
+        <td>BA-{{b.benhAn?.id}}</td>
+        <td>BN-{{b.id}}</td>
+        <td>{{b.ten}}</td>
+        <td>{{b.ngayNhapVien| date:"dd-MM-yyyy"}}</td>
+        <td>{{b.ngayRaVien| date:"dd-MM-yyyy"}}</td>
+        <td>{{b.lyDo}}</td>
+        <td>{{b.phuongPhap}}</td>
+        <td>{{b.bacSi}}</td>
+        <td><a [routerLink]="['/edit',b.id]" class="btn btn-warning">Sửa</a></td>
+        <td>
+          <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="benhNhan=b">
+            Xóa
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-left: 500px">
+  </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Xóa học sinh</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input name="deleteId" hidden id="deleteId">
+          Bạn có muốn xóa thông tin bệnh án :BA-{{benhNhan.benhAn?.id}} hay không?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
+          <button type="submit" class="btn btn-danger" (click)="delete(benhNhan.id)">Xóa</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

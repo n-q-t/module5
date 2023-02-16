@@ -1,0 +1,98 @@
+{
+  "student": [
+    {
+      "id": 2,
+      "code": "HS-0003",
+      "name": "Quoc Trung",
+      "dayOfBirth": "2023-02-01",
+      "gender": "Nữ",
+      "address": "dak lak",
+      "clazz": {
+        "id": 2,
+        "name": "C0822G1"
+      }
+    },
+    {
+      "id": 3,
+      "code": "HS-0001",
+      "name": "Quoc Trung",
+      "dayOfBirth": "2023-02-04",
+      "gender": "Nam",
+      "address": "dak nong",
+      "clazz": {
+        "id": 1,
+        "name": "C0722G1"
+      }
+    },
+    {
+      "id": 4,
+      "code": "HS-0002",
+      "name": "Quoc Trung",
+      "dayOfBirth": "2023-02-04",
+      "gender": "Nam",
+      "address": "dak lak",
+      "clazz": {
+        "id": 1,
+        "name": "C0722G1"
+      }
+    },
+    {
+      "id": 5,
+      "code": "HS-0002",
+      "name": "Quoc Trung",
+      "dayOfBirth": "2023-02-11",
+      "gender": "Nam",
+      "address": "viet nam",
+      "clazz": {
+        "id": 2,
+        "name": "C0822G1"
+      }
+    },
+    {
+      "id": 6,
+      "code": "HS-0002",
+      "name": "Quoc Trung",
+      "dayOfBirth": "2023-02-08",
+      "gender": "Nam",
+      "address": "dak lak",
+      "clazz": {
+        "id": 1,
+        "name": "C0722G1"
+      }
+    },
+    {
+      "id": 7,
+      "code": "HS-0002",
+      "name": "Quoc Trun",
+      "dayOfBirth": "2023-02-08",
+      "gender": "Nam",
+      "address": "dak lak",
+      "clazz": {
+        "id": 1,
+        "name": "C0722G1"
+      }
+    },
+    {
+      "id": 8,
+      "code": "HS-0002",
+      "name": "Quoc Tru",
+      "dayOfBirth": "2023-01-30",
+      "gender": "Nữ",
+      "address": "dak nong",
+      "clazz": {
+        "id": 2,
+        "name": "C0822G1"
+      }
+    }
+  ],
+  "clazz": [
+    {
+      "id": 1,
+      "name": "C0722G1"
+    },
+    {
+      "id": 2,
+      "name": "C0822G1"
+    }
+  ]
+}

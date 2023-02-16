@@ -8,6 +8,7 @@ import {FacilityService} from '../../../service/facility/facility.service';
   styleUrls: ['./facility-list.component.css']
 })
 export class FacilityListComponent implements OnInit {
+  p:number=1;
   facility:Facility={};
   facilitys:Facility[]=[];
   constructor(private facilityService:FacilityService) { }
