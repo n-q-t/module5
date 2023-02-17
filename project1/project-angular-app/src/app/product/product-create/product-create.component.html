@@ -1,1 +1,165 @@
-Thêm mới
+<section class="vh-90 gradient-custom" style="background-color: lightblue">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h3 style="text-align: center">Thêm mới</h3>
+            <form [formGroup]="benhNhanForm" (ngSubmit)="create()">
+
+
+
+                    <input type="text" id="id" class="form-control form-control-lg" formControlName="id" hidden/>
+
+
+
+              <div class="row">
+                <div class=" d-flex align-items-center">
+
+                  <div class="form-outline datepicker w-100">
+                    <label for="ten" class="form-label">Tên bệnh nhân</label>
+                    <input type="text" class="form-control form-control-lg" id="ten" formControlName="ten"/>
+                    <div
+                      *ngIf="!benhNhanFormValue.ten.valid && (benhNhanFormValue.ten.dirty||benhNhanFormValue.ten.touched)">
+                      <div style="color: red" *ngIf="benhNhanFormValue.ten.hasError('required')">Không được bỏ trống
+                      </div>
+                      <div style="color: red" *ngIf="benhNhanFormValue.ten.hasError('pattern')">Tên không được chứa kí
+                        tự số và đúng định dạng:Nguyen Van A
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-outline">
+                    <label class="form-label ">Tên bệnh án</label>
+                    <select class="form-select form-control-lg" formControlName="benhAn">
+                      <option value="">--Bệnh án--</option>
+                      <option *ngFor="let b of benhAns" [ngValue]="b" [text]="b.ten"></option>
+                    </select>
+                  </div>
+                  <div
+                    *ngIf="!benhNhanFormValue.benhAn.valid && (benhNhanFormValue.benhAn.touched||benhNhanFormValue.benhAn.dirty)">
+                    <div style="color: red" *ngIf="benhNhanFormValue.benhAn.hasError('required')">Không được bỏ trống
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="ngayNhapVien">Ngày nhập viện</label>
+                    <input type="date" id="ngayNhapVien" class="form-control form-control-lg"
+                           formControlName="ngayNhapVien"/>
+                    <div
+                      *ngIf="!benhNhanFormValue.ngayNhapVien.valid && (benhNhanFormValue.ngayNhapVien.dirty||benhNhanFormValue.ngayNhapVien.touched)">
+                      <div style="color: red" *ngIf="benhNhanFormValue.ngayNhapVien.hasError('required')">Không được bỏ
+                        trống
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="ngayRaVien">Ngày ra viện</label>
+                    <input type="date" id="ngayRaVien" class="form-control form-control-lg"
+                           formControlName="ngayRaVien" (change)="checkNgayRaVien()"/>
+                    <div
+                      *ngIf="!benhNhanFormValue.ngayRaVien.valid && (benhNhanFormValue.ngayRaVien.dirty||benhNhanFormValue.ngayRaVien.touched)">
+                      <div style="color: red" *ngIf="benhNhanFormValue.ngayRaVien.hasError('required')">Không được bỏ
+                        trống
+                      </div>
+
+                      <div style="color: red" *ngIf="benhNhanFormValue.ngayRaVien.hasError('checkDate')">Ngày ra viện
+                        phải lớn hơn hoặc bằng ngày nhập viện
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="row">
+                <div class=" d-flex align-items-center">
+
+                  <div class="form-outline datepicker w-100">
+                    <label for="lyDo" class="form-label">Lý do nhập viện</label>
+                    <input type="text" class="form-control form-control-lg" id="lyDo" formControlName="lyDo"/>
+                    <div
+                      *ngIf="!benhNhanFormValue.lyDo.valid && (benhNhanFormValue.lyDo.dirty||benhNhanFormValue.lyDo.touched)">
+                      <div style="color: red" *ngIf="benhNhanFormValue.lyDo.hasError('required')">Không được bỏ trống
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class=" d-flex align-items-center">
+
+                  <div class="form-outline datepicker w-100">
+                    <label for="phuongPhap" class="form-label">Phương pháp điều trị</label>
+                    <input type="text" class="form-control form-control-lg" id="phuongPhap"
+                           formControlName="phuongPhap"/>
+                    <div
+                      *ngIf="!benhNhanFormValue.phuongPhap.valid && (benhNhanFormValue.phuongPhap.dirty||benhNhanFormValue.phuongPhap.touched)">
+                      <div style="color: red" *ngIf="benhNhanFormValue.phuongPhap.hasError('required')">Không được bỏ
+                        trống
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class=" d-flex align-items-center">
+
+                  <div class="form-outline datepicker w-100">
+                    <label for="bacSi" class="form-label">Bác sĩ điều trị</label>
+                    <input type="text" class="form-control form-control-lg" id="bacSi" formControlName="bacSi"/>
+                    <div
+                      *ngIf="!benhNhanFormValue.bacSi.valid && (benhNhanFormValue.bacSi.dirty||benhNhanFormValue.bacSi.touched)">
+                      <div style="color: red" *ngIf="benhNhanFormValue.bacSi.hasError('required')">Không được bỏ trống
+                      </div>
+                      <div style="color: red" *ngIf="benhNhanFormValue.bacSi.hasError('pattern')">Tên không được chứa kí
+                        tự số
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="mt-4 pt-2">
+                  <button type="button" class="btn btn-primary btn-lg" style="margin-left: 200px"
+                          routerLink="/">Quay lại
+                  </button>
+                  <button type="submit" class="btn btn-primary btn-lg" style="margin-left: 40px"
+                          [disabled]="!benhNhanForm.valid"> Thêm mới
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+

@@ -9,4 +9,5 @@ export interface BenhNhan {
   lyDo?:string;
   phuongPhap?:string;
   bacSi?:string;
+
 }

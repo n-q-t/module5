@@ -3,6 +3,7 @@ import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/form
 import {BenhNhanService} from "../../service/benh-nhan.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BenhNhan} from "../../model/benh-nhan";
+import {BenhAn} from '../../model/benh-an';
 
 @Component({
   selector: 'app-product-edit',
@@ -11,9 +12,10 @@ import {BenhNhan} from "../../model/benh-nhan";
 })
 export class ProductEditComponent implements OnInit {
   benhNhan: BenhNhan = {};
+  benhAns:BenhAn[]=[];
   benhNhanForm: FormGroup = new FormGroup({
     id: new FormControl(),
-    benhAn: new FormControl(),
+    benhAn: new FormControl('',[Validators.required]),
     ten: new FormControl('', [Validators.required, Validators.pattern("^([A-Z][a-záàảạãăắằặẵâấầẫậẩéèẻẽẹêếềểễệóòỏõọôốồổỗộơớờởỡợíìỉĩịùúủũụưứửữựỵỷỹýỳ]*[ ])*([A-Z][a-záàảạãăắằặẵâấầẫậẩéèẻẽẹêếềểễệóòỏõọôốồổỗộơớờởỡợíìỉĩịùúủũụưứửữựỵỷỹýỳ]*)$")]),
     ngayNhapVien: new FormControl('', [Validators.required]),
     ngayRaVien: new FormControl('', [Validators.required]),
@@ -30,6 +32,9 @@ export class ProductEditComponent implements OnInit {
         console.log(this.benhNhan);
         this.benhNhanForm.patchValue(this.benhNhan);
       })
+    })
+    this.benhNhanService.getAllBenhAn().subscribe(data=>{
+      this.benhAns=data;
     })
   }
 
@@ -57,4 +62,8 @@ export class ProductEditComponent implements OnInit {
       this.benhNhanFormValue.ngayRaVien.setErrors(null);
     }
   }
+  compareWith(o1: BenhAn, o2: BenhAn): boolean {
+    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+  }
+
 }
