@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {BenhNhan} from "../model/benh-nhan";
 import {BenhAn} from '../model/benh-an';
@@ -14,8 +14,10 @@ export class BenhNhanService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getAll(): Observable<BenhNhan[]> {
-    return this.httpClient.get<BenhNhan[]>(this.URL);
+  getAll(page: number): Observable<any> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+    return this.httpClient.get<any>(this.URL,{params});
   }
 
   getAllBenhAn(): Observable<BenhAn[]> {
@@ -27,7 +29,7 @@ export class BenhNhanService {
   }
 
   edit(benhNhan: BenhNhan) {
-    return this.httpClient.patch(this.URL + '/' + benhNhan.id, benhNhan);
+    return this.httpClient.patch(this.URL + '/' + benhNhan.id,benhNhan);
   }
 
   delete(id: any) {
@@ -36,5 +38,11 @@ export class BenhNhanService {
 
   save(benhNhan:BenhNhan){
     return this.httpClient.post(this.URL,benhNhan);
+  }
+
+  search(benhNhan: string, bacSi: string,page: number):Observable<any> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+    return this.httpClient.get<any>(this.URL+'/?ten='+benhNhan+'&bacSi='+bacSi,{params});
   }
 }

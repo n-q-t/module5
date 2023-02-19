@@ -1,3 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0px">
+  <div class="container-fluid" style="margin-left: 100px" style="background-color: green;height: 50px">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/" style="color: white">Home</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Tên bệnh nhân" aria-label="Search" #searchName>
+
+        <input class="form-control me-2" type="search" placeholder="Tên bác sĩ" aria-label="Search" #searchCustomerType>
+
+        <!--        <select class="form-control me-2" #searchClazzName>-->
+        <!--          <option value="">&#45;&#45;Loại khách hàng&#45;&#45;</option>-->
+        <!--          <option *ngFor="let c of clazzs" [ngValue]="c.name" [text]="c.name"></option>-->
+        <!--        </select>-->
+        <button class="btn btn-info" type="button" style="margin-right: 100px"
+                (click)="search(searchName.value,searchCustomerType.value,page.number)">Search
+        </button>
+      </form>
+
+    </div>
+  </div>
+</nav>
+
+
 <div class="container">
   <a routerLink="/create" class="btn btn-primary" style="float: right;margin: 10px;margin-right: 20px">Thêm
     mới</a>
@@ -39,29 +67,49 @@
       </tr>
       </tbody>
     </table>
-  </div>
-  <div style="margin-left: 500px">
-  </div>
-</div>
 
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <form>
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Xóa học sinh</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <input name="deleteId" hidden id="deleteId">
-          Bạn có muốn xóa thông tin bệnh án :BA-{{benhNhan.benhAn?.id}} hay không?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
-          <button type="submit" class="btn btn-danger" (click)="delete(benhNhan.id)">Xóa</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
 
+    <div class="pagination" style="float: right">
+      <nav *ngIf="page.number > 0">
+        <a class="btn btn-primary" (click)="previous(searchName.value,searchCustomerType.value,page.number - 1)">Previous</a>
+      </nav>
+      <nav *ngIf="page.number<page.totalPages-1">
+        <a class="btn btn-primary" (click)="next(searchName.value,searchCustomerType.value,page.number + 1)">Next</a>
+      </nav>
+    </div>
+
+
+  </div>
+
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Xóa học sinh</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input name="deleteId" hidden id="deleteId">
+            Bạn có muốn xóa thông tin bệnh án :BA-{{benhNhan.benhAn?.id}} hay không?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
+            <button type="submit" class="btn btn-danger" (click)="delete(benhNhan.id)">Xóa</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+
+  <!--<nav aria-label="Page navigation example">-->
+  <!--  <ul class="pagination">-->
+  <!--    <li class="page-item" *ngIf="page.number > 1"><a class="page-link" href="#" (click)="previous(page.number - 1)">Previous</a></li>-->
+  <!--    <li class="page-item" *ngIf="page.number >= 0"><a class="page-link" href="#" (click)="previous(page.number)">{{page.number}}</a></li>-->
+  <!--&lt;!&ndash;    <li class="page-item"><a class="page-link" href="#">2</a></li>&ndash;&gt;-->
+  <!--&lt;!&ndash;    <li class="page-item"><a class="page-link" href="#">3</a></li>&ndash;&gt;-->
+  <!--    <li class="page-item" *ngIf="page.number<page.totalPages-1"><a class="page-link" href="#" (click)="next(page.number + 1)">Next</a></li>-->
+  <!--  </ul>-->
+  <!--</nav>-->
